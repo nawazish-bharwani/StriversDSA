@@ -1,21 +1,19 @@
-import java.util.HashMap;
 class Solution {
     public int majorityElement(int[] nums) {
-         HashMap<Integer,Integer> hm = new HashMap<>();
-        int ans=0;
-        for (int i=0;i<nums.length;i++) {
-            if(hm.containsKey(nums[i])) {
-                hm.put(nums[i],hm.get(nums[i])+1);
+        int currMajority=nums[0];
+        int count=1;
+        for (int i=1;i<nums.length;i++) {
+            if (count == 0) {
+                currMajority = nums[i];
+                count = 1;
             } else {
-                hm.put(nums[i],1);
+                if (nums[i] == currMajority) {
+                    count++;
+                } else {
+                    count--;
+                }
             }
         }
-        for (int i = 0; i < nums.length; i++) {
-            if(hm.get(nums[i]) > nums.length/2) {
-                ans=nums[i];
-                break;
-            }
-        }
-        return ans;
+        return currMajority;
     }
 }
