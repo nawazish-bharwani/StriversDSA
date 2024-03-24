@@ -13,21 +13,19 @@ class Solution {
         ListNode temp = head;
         int length = getLLLength(head);
         if(n==length) {
-            head = head.next;
-            temp.next = null;
-            return head;
+            return head.next;
         }
         int count = length-n-1; //-1 as temp - head which is 1st node
         while (count>0) {
             count--;
             temp=temp.next;
         }
-        if(temp.next.next == null) {
-            temp.next=null;
-            return head;
-        } else {
+        // if(temp.next.next == null) {
+        //     temp.next=null;
+        //     return head;
+        // } else {
             temp.next = temp.next.next;
-        }
+        // }
         return head;
     }
     static int getLLLength(ListNode head) {
