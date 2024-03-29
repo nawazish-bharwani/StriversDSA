@@ -10,28 +10,11 @@
  */
 class Solution {
     public int getDecimalValue(ListNode head) {
-        ListNode newHead = revList(head);
-        int pow=0;
-        int ans=0;
-        ListNode temp = newHead;
-        while(temp!=null) {
-            if(temp.val == 1) {
-            int res = (int)(Math.pow(2,pow));
-            ans+=res;
-            }
-            pow++;
-            temp=temp.next;
+        int res = 0;
+        while(head != null){
+            res = res * 2 + head.val;
+            head = head.next;
         }
-        return ans;
-    }
-    static ListNode revList(ListNode head) {
-        ListNode node=null;
-        while(head!=null) {
-            ListNode temp=head;
-            head=head.next;
-            temp.next=node;
-            node=temp;
-        }
-        return node;
+        return res;
     }
 }
