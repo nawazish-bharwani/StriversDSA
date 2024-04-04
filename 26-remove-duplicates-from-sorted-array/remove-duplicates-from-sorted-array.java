@@ -1,16 +1,13 @@
 import java.util.HashSet;
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int start=0;
-        int end=start+1;
-        while(end<nums.length) {
-            if(nums[start] == nums[end]) {
-                end++;
-            } else {
-                start++;
-                nums[start]=nums[end];
+        int idx=1;
+        for(int i=1;i<nums.length;i++) {
+            if(nums[i] != nums[i-1]) {
+                nums[idx]=nums[i];
+                idx++;
             }
         }
-        return ++start;
+        return idx;
     }
 }
